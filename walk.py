@@ -26,16 +26,15 @@ def next_steps(stack):
 	return potential
 
 
-paths = []
-stack = [[0,0]]
-print_stack(stack,1)	
-	
-new_steps = next_steps(stack)
-print_stack(new_steps,2)
+paths = [[[0,0]]]
+print_stack(paths[0],1)	
 
-for step in new_steps:
-	paths.append(stack + [step])
+
+for stack in paths:	
+	print stack
+	new_steps = next_steps(stack)
+	for step in new_steps:
+		paths.append(stack + [step])
 	
+
 print paths
-for stack in paths:
-	print_stack(stack,2)
