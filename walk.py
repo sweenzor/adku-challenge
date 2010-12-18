@@ -31,10 +31,13 @@ print_stack(paths[0],1)
 
 
 for stack in paths:	
-	print stack
+	test = stack 
+	print test
+	print '\n'
 	new_steps = next_steps(stack)
 	for step in new_steps:
 		paths.append(stack + [step])
+	paths.remove(stack)
 	
 
 print paths
