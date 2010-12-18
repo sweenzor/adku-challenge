@@ -8,3 +8,16 @@ def print_stack(stack):
 	
 stack = [[1,1],[2,2],[3,3]]
 print_stack(stack)
+	
+	
+def next_steps(stack):
+	potential = []
+	potential.append([stack[-1][0]+1,stack[-1][1]])
+	potential.append([stack[-1][0]-1,stack[-1][1]])
+	potential.append([stack[-1][0],stack[-1][1]+1])
+	potential.append([stack[-1][0],stack[-1][1]-1])
+	print_stack(potential)
+	
+
+	
+next_steps(stack)
