@@ -6,7 +6,7 @@ def print_stack(stack,num):
 		space[int[0],int[1]] = num
 	print space
 	
-stack = [[1,1],[2,2],[4,3]]
+stack = [[1,1],[4,2],[4,3]]
 print_stack(stack,1)
 	
 	
@@ -23,7 +23,7 @@ def next_steps(stack):
 		if next_step[1] < 0: potential.remove(next_step)
 		if next_step[1] > 4: potential.remove(next_step)
 		for step in stack:
-			
+			if next_step == step: potential.remove(next_step)
 	
 	print_stack(potential,2)
 		
