@@ -29,13 +29,22 @@ def next_steps(stack):
 
 paths = [[[0,0],[0,1]],[[0,0],[1,0]]]
 
+complete = []
+
+
 while True:
 	os.system('cls')
 	steps = paths.pop(0)
+	if steps[-1] == [4,4]:
+		complete.append(steps)
+	
 	new_steps = next_steps(steps)
-	for step in new_steps:
-		paths.append(steps+[step])
+	if new_steps:
+		for step in new_steps:
+			paths.append(steps+[step])
 	print_stack(paths[-1],1)
-	print len(paths)
+	print 'complete: ',len(complete)
+	print 'potential: ',len(paths)
+
 	
 
