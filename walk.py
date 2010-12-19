@@ -35,17 +35,21 @@ complete = []
 
 
 while True:
-	os.system('cls')
 	steps = paths.pop(0)
 	new_steps = next_steps(steps)
 	if new_steps:
 		for step in new_steps:
-			paths.append(steps+[step])
-	if steps[-1] == [grid_size[0]-1,grid_size[1]-1]:
-		complete.append(steps)
+			if step == [grid_size[0]-1,grid_size[1]-1]:
+				complete.append(steps+[step])
+				#print_stack(complete[-1])
+				os.system('cls')
+			else:
+				paths.append(steps+[step])
+				#print_stack(paths[-1])
+				os.system('cls')
 	if not paths:
 		break
-	print_stack(paths[-1])
+	if complete: print print_stack(complete[-1])
 	print 'last: ',paths[-1][-1]
 	print 'complete: ',len(complete)
 	print 'potential: ',len(paths)
