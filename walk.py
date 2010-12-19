@@ -16,28 +16,29 @@ def next_steps(stack):
 	potential.append([stack[-1][0],stack[-1][1]-1])
 	
 	for next_step in potential:
+		for step in stack:
+			if next_step == step: potential.remove(next_step)
 		if next_step[0] < 0: potential.remove(next_step)
 		if next_step[0] > 4: potential.remove(next_step)
 		if next_step[1] < 0: potential.remove(next_step)
 		if next_step[1] > 4: potential.remove(next_step)
-		for step in stack:
-			if next_step == step: potential.remove(next_step)
+
 
 	return potential
 
 
-paths = [[[0,0]]]
-print_stack(paths[0],1)	
-
-
-for stack in paths:	
-	test = stack 
-	print test
-	print '\n'
-	new_steps = next_steps(stack)
-	for step in new_steps:
-		paths.append(stack + [step])
-	paths.remove(stack)
 	
 
-print paths
+	
+
+paths = [[[0,0],[0,1]],[[0,0],[1,0]]]
+
+while True:
+	steps = paths.pop(0)
+	new_steps = next_steps(steps)
+	for step in new_steps:
+		paths.append(steps+[step])
+	for path in paths:
+		print path
+	print '\n'
+
