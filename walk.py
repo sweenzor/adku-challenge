@@ -1,4 +1,5 @@
 import numpy
+import os
 
 def print_stack(stack,num):	
 	space = numpy.zeros((5,5))
@@ -29,11 +30,12 @@ def next_steps(stack):
 paths = [[[0,0],[0,1]],[[0,0],[1,0]]]
 
 while True:
+	os.system('cls')
 	steps = paths.pop(0)
 	new_steps = next_steps(steps)
 	for step in new_steps:
 		paths.append(steps+[step])
-	for path in paths:
-		print path
-	print '\n'
+	print_stack(paths[-1],1)
+	print len(paths)
+	
 
