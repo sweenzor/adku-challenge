@@ -1,7 +1,7 @@
 import numpy
 import os
 
-grid_size = [3,3]
+grid_size = [5,5]
 
 def print_stack(stack):	
 	space = numpy.zeros((grid_size[0],grid_size[1]))
@@ -37,23 +37,26 @@ complete = []
 while True:
 	os.system('cls')
 	steps = paths.pop(0)
-	if steps[-1] == [grid_size[0]-1,grid_size[1]-1]:
-		complete.append(steps)
 	new_steps = next_steps(steps)
 	if new_steps:
 		for step in new_steps:
 			paths.append(steps+[step])
+	if steps[-1] == [grid_size[0]-1,grid_size[1]-1]:
+		complete.append(steps)
 	if not paths:
 		break
 	print_stack(paths[-1])
+	print 'last: ',paths[-1][-1]
 	print 'complete: ',len(complete)
 	print 'potential: ',len(paths)
 	print '\n'
 
 
-print 'complete: ',len(complete)
-print 'potential: ',len(paths)
+print '\n\n\n'
 
 for line in complete:
 	print line
 	print '\n'
+
+print 'complete: ',len(complete)
+print 'potential: ',len(paths)
