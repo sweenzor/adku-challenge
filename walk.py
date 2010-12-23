@@ -1,7 +1,8 @@
 import numpy
 import os
 
-grid_size = [3,3]
+grid_size = [5,5]
+stats = numpy.zeros((grid_size[0],grid_size[1]))
 
 def print_stack(stack):	
 	space = numpy.zeros((grid_size[0],grid_size[1]))
@@ -26,6 +27,9 @@ def next_steps(stack):
 		if next_step[1] < 0: potential.remove(next_step)
 		if next_step[1] > grid_size[1]-1: potential.remove(next_step)
 
+	for step in potential:
+		stats[step[0],step[1]] = stats[step[0],step[1]] + 1
+	
 	return potential
 
 
@@ -56,7 +60,7 @@ while True:
 	print '\n'
 
 
-print '\n\n\n'
+print '\n'
 
 fid = open('paths.dat', 'w')
 for line in complete:
@@ -64,3 +68,5 @@ for line in complete:
 
 print 'complete: ',len(complete)
 print 'potential: ',len(paths)
+
+print stats
