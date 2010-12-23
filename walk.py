@@ -1,7 +1,7 @@
 import numpy
 import os
 
-grid_size = [5,5]
+grid_size = [3,3]
 
 def print_stack(stack):	
 	space = numpy.zeros((grid_size[0],grid_size[1]))
@@ -42,14 +42,14 @@ while True:
 			if step == [grid_size[0]-1,grid_size[1]-1]:
 				complete.append(steps+[step])
 				#print_stack(complete[-1])
-				os.system('cls')
 			else:
 				paths.append(steps+[step])
 				#print_stack(paths[-1])
-				os.system('cls')
 	if not paths:
 		break
-	if complete: print print_stack(complete[-1])
+	if complete:
+		os.system('cls')
+		print print_stack(complete[-1])
 	print 'last: ',paths[-1][-1]
 	print 'complete: ',len(complete)
 	print 'potential: ',len(paths)
@@ -58,9 +58,9 @@ while True:
 
 print '\n\n\n'
 
+fid = open('paths.dat', 'w')
 for line in complete:
-	print line
-	print '\n'
+	fid.write(str(line)+'\n')
 
 print 'complete: ',len(complete)
 print 'potential: ',len(paths)
